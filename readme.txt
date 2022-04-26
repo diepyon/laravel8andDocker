@@ -1,10 +1,20 @@
-laravel8������Ԃ̃R���e�i�ł��B
-phpmyadmin�����āAphp.ini�̃t�@�C���T�C�Y��������グ�Ă��܂��B
+laravel8初期状態のコンテナです。
+phpmyadminを入れて、php.iniのファイルサイズ上限だけ上げています。
 
-�|�[�g�ԍ�8080
-phpmyadmain��8081
+ポート番号8080
+phpmyadmainは8081
 
-�C���X�g�[����ɉ��L�̃R�}���h���K�v
+インストールしたいディレクトリに移動（ディレクトリごとダウンロードされるので新たにフォルダを作る必要はない）
+git clone https://github.com/diepyon/laravel8andDocker.git
+
+任意の名称に変更
+mv laravel8andDocker newname
+
+ディレクトリ内に移動して
+docker compose up -d
+
+
+インストール後に下記のコマンドが必要
 docker compose exec app bash
 composer install
 cp .env.example .env
@@ -13,3 +23,10 @@ php artisan storage:link
 chmod -R 777 storage bootstrap/cache
 php artisan migrate
 exit
+
+githubnの紐づけ直しも必要
+git remote set-url origin {new-url}
+git add -A
+git commit -m "first commit"
+git branch -M main
+git push -u origin main
